@@ -236,19 +236,13 @@ class IncrementalReleaseProvider(ReleaseProvider):
         p_uri = urlparse(uri)
 
         # Build path fragments
-        parts = [
-            self._client.package_name(source, target),
-            str(version),
-            self._client.database_name(source, target),
-        ]
+        parts_mine = self._client.package_name(source, target) + "@" + str(version) + "/" + self._client.database_name(source, target)
 
         if p_uri.scheme == 'database':
-            parts.append(source)
+            parts_mine = parts_mine + "/" + source
 
         # Build URL
         return urljoin(
             self.database_url,
-            '/'.join(parts + [
-                p_uri.path.lstrip('/')
-            ]),
+            parts_mine + "/" + p_uri.path.lstrip('/')
         )

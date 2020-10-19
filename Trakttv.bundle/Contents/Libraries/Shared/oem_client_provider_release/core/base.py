@@ -7,7 +7,7 @@ log = logging.getLogger(__name__)
 
 
 class ReleaseProvider(Provider):
-    def __init__(self, database_url='https://cdn.rawgit.com/OpenEntityMap/', database_author='OpenEntityMap',
+    def __init__(self, database_url='https://cdn.jsdelivr.net/gh/alcroito/', database_author='alcroito',
                  fmt='json', storage='file'):
         super(ReleaseProvider, self).__init__(storage)
 
